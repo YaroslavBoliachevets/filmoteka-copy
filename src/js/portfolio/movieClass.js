@@ -117,13 +117,14 @@ export {
 	  return Object.values(genresArray).join(', ');
 	}
   
-	makeAllMoodalGenresList(genre_ids, genres) {
+	makeAllMoodalGenresList(genres_id, genres) {
 		const genresArray = [];
-		for (let id of genre_ids) {
-		  if (genres[id] === null || genres[id] === undefined) {
-			continue;
-		  }
-		  genresArray.push(genres[id].name);
+		for (let id of genres_id) {
+			const index = genres.findIndex(genre => genre.id == id);
+			if (genres[index] === null || genres[index] === undefined) {
+			  continue;
+			}
+		  genresArray.push(genres[index].name);
 		}
 		return Object.values(genresArray).join(', ');
 	  }
