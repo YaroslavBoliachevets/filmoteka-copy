@@ -13,13 +13,17 @@ function onModalBtnClick(evt) {
   const id = liBtn.getAttribute('data-id');
   const actions = liBtn.getAttribute('data-actions');
   const film = movieClass.searchFilmByIdInLS(id);
-  // console.log('film:', film,  'actions:', actions, 'id:', id, 'liBtn', liBtn);
+  console.log('film:', film,  'actions:', actions, 'id:', id, 'liBtn', liBtn);
 
   if (btnModalClass.isFilmIncludesLSLibrary(id, actions)) {
+    console.log('removeFromLibraryMovieInLS', id);
+    
     movieClass.removeFromLibraryMovieInLS(film, actions);
   } else {
+    console.log('saveToLibraryMovieInLS', id);
     movieClass.saveToLibraryMovieInLS(film, actions);
   }
+
 
   // if (  btnModalClass.isFilmIncludesLSQueue(id)) {movieClass.removeFromLibraryMovie(film, actions)} else{
   //   movieClass.saveToLibraryMovieInLS(film, actions);

@@ -5,6 +5,7 @@ export { btnModalClass };
 
 const btnModalClass = new class BtnModal {
    isFilmIncludesLSLibrary(id, actions) {
+	
     const filmsArray = movieClass.getFromLS(`${actions}`);
 		if (filmsArray === null) {
 			return false 
