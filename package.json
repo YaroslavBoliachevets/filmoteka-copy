@@ -19,7 +19,11 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1",
-    "modern-normalize": "^1.1.0"
+    "firebase": "^9.9.0",
+    "jquery": "^3.6.0",
+    "lodash": "^4.17.21",
+    "modern-normalize": "^1.1.0",
+    "webpack": "^5.73.0"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",

@@ -1,8 +1,8 @@
 import { refs } from '../refs';
 import { movieClass } from '../portfolio/movieClass';
 import { btnModalClass } from './btnModalClass';
-
-refs.modalBtn.addEventListener('click', onModalBtnClick);
+import {createFilmStickers, removeFilmStickers} from '../portfolio/cteateGalleryStickers';
+export {onModalBtnClick};
 
 function onModalBtnClick(evt) {
   evt.preventDefault();
@@ -13,19 +13,24 @@ function onModalBtnClick(evt) {
   const id = liBtn.getAttribute('data-id');
   const actions = liBtn.getAttribute('data-actions');
   const film = movieClass.searchFilmByIdInLS(id);
-  console.log('film:', film,  'actions:', actions, 'id:', id, 'liBtn', liBtn);
+  // console.log('film:', film,  'actions:', actions, 'id:', id, 'liBtn', liBtn);
 
+  // Проверка - сохранен ли фильм, внесение или удаление с локал сторидж 
   if (btnModalClass.isFilmIncludesLSLibrary(id, actions)) {
-    console.log('removeFromLibraryMovieInLS', id);
+    // console.log('удаляю из хранилища', );
     
+    removeFilmStickers(film, actions);
     movieClass.removeFromLibraryMovieInLS(film, actions);
   } else {
-    console.log('saveToLibraryMovieInLS', id);
+    // console.log('добавляю в хранилище', );
+    
+    createFilmStickers(film, actions);
     movieClass.saveToLibraryMovieInLS(film, actions);
+
+    
   }
 
-
-  // if (  btnModalClass.isFilmIncludesLSQueue(id)) {movieClass.removeFromLibraryMovie(film, actions)} else{
-  //   movieClass.saveToLibraryMovieInLS(film, actions);
-  // }
+  // console.log('изменяю название кнопки', );
+  
+  movieClass.changeModalBtnName(liBtn, id, actions);
 }

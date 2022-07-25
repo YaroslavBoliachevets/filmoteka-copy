@@ -1,0 +1,177 @@
+// Students
+.team__container{
+  padding: 30px;
+}
+  
+.team-list{
+  justify-content: center;
+   @media screen and (min-width: 768px){
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -30px;
+   }
+  margin-bottom: -30px;
+}
+  
+.section-title{
+    @media screen and(max-width: 1199px){
+     font-size: 18px; 
+    margin-bottom: 10px;
+    }
+  font-size: 24px;
+  line-height: 1.17;
+  text-align: center;
+  justify-content: center;
+  letter-spacing: 0.03em;
+  margin-bottom: 20px;
+  color: orangered;
+}
+  
+
+.team-list__item{
+  background-color: rgba(231, 211, 194, 0.2);
+  box-shadow: 5px 5px 11px -2px #ffffff;
+  border-top-left-radius: 40%;
+  border-bottom-right-radius: 60px;
+ 
+  margin-bottom: 30px;
+   @media screen and (min-width: 768px){
+    flex-basis: calc(100% / 2 - 40px);
+    margin-left: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+   }
+    @media screen and (min-width: 1200px){
+      flex-basis: calc(100% / 6 - 40px);
+    }
+}
+  
+.team-list__wrap{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.team-list__image{
+width: 100%;
+border-radius: 50%;
+box-shadow: 5px 5px 11px -2px #000000;
+}
+  
+.team-list__team-name{
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.19;
+  letter-spacing: 0.03em;
+  color: orangered;
+}
+  
+.team-list__team-proffesion{
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.19;
+  letter-spacing: 0.03em;
+  margin-top: 10px;
+  margin-bottom: 16px;
+  color: #000000;
+}
+ 
+.social-list{
+	display: flex;
+	justify-content: center;
+}
+  
+.social-list__item{
+width: 20px;
+height: 20px;
+border-radius: 50%;
+}
+  
+.social-list__item + .social-list__item{
+margin-left: 10px;
+}
+  
+.social-list__link-grey{
+width: 100%;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+outline: none;
+transition: color 250ms;
+transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);
+transition: background-color 250ms;
+transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+	&:focus{
+	  background-color: orangered;
+		}
+}
+
+
+//   Modalka
+.overflow {
+    overflow: hidden;
+}
+
+.backdrop__students{
+    z-index: 10;
+	  overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(244, 120, 12, 0.2);
+    transition: opacity 1000ms, visibility 1000ms;
+  }
+
+.modal-window{
+  display: flex;
+  position: absolute;
+  top:50%;
+  left:50%;
+  width: 200px;
+  height: 95%;
+  overflow-y: scroll;
+  margin: auto 0;
+  background-color: #332c2c;
+  box-shadow: 0px 1px 3px rgba(202, 47, 47, 0.12), 0px 1px 1px rgba(159, 150, 150, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  transform: translate(-50%,-50%) scale(1) rotate(0);
+  transition: transform 1000ms;
+    @media screen and (min-width: 768px) {
+      min-width: 500px;
+      overflow-y: scroll;
+      }
+      @media screen and (min-width: 1200px) {
+      min-width: 1000px;
+      overflow-y: hidden;
+    }
+}
+
+.backdrop__students.is-hidden{
+.modal{
+    transform: scale(1.5) rotate(180deg) translate(1000px);
+    transition: transform 1000ms;
+    }
+}
+  
+.modal-window__modal-close{
+  width: 30px;
+  height: 30px;
+  color: #332c2c;;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

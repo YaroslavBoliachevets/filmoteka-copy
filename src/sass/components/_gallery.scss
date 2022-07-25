@@ -5,6 +5,7 @@
     }
 
 .gallery_card__item {
+    position: relative;
     margin-bottom: 20px;
     &:nth-child(2n + 1){
         @media screen and (min-width: 768px) and (max-width: 1279px) {
@@ -16,6 +17,25 @@
             margin-right: 16px;
         }
     }
+}
+
+.status-btn-wrapper {
+    position: absolute;
+    cursor:pointer;
+    top:10px;
+    left: 10px;
+}
+
+.status-btn {
+    cursor:pointer;
+    display: block;
+    height: 40px;
+    text-decoration:none;
+    text-transform:uppercase;
+    color: #ffffff;
+    padding: 0 12px;
+    background-color:#ff6b01;
+
 }
 
 .gallery_thumb{
@@ -38,6 +58,12 @@
     line-height: 16px;
     color: black;
     }
+
+    .dark .gallery_info__name {
+        color: #fff;
+    }
+
+
 
 .gallery_info__about{
     display: flex;
