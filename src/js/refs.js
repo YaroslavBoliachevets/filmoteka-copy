@@ -1,6 +1,7 @@
 export { refs };
 
 const refs = {
+  galleryContainer: document.querySelector('.gallery-container'),
   gallery: document.querySelector('.js-gallery__list'),
   backdrop: document.querySelector('#backdrop'),
   body: document.querySelector('body'),
@@ -19,10 +20,12 @@ const refs = {
   searchInput: document.querySelector('input[name="search"]'),
   modalBtnWatched: document.querySelector('[data-actions="watched"]'),
   modalBtnQueue: document.querySelector('[data-actions="queue"]'),
-
+  btnQueue: document.querySelector('.queue-js'),
+  savedQueue: localStorage.getItem('queue'),
+  savedWatched: localStorage.getItem('watched'),
   btnWatched: document.querySelector('.watched-js'),
+  queueListRef: document.querySelector('.js-queue__list'),
   watchedListRef: document.querySelector('.js-library__list'),
-
   themeBtnLibrary: document.querySelector('#theme-toggle__library'),
   themeBtnHtml: document.querySelector('#theme-toggle__html'),
   lightToggleIcon: document.querySelector('.lightToggleIcon'),
@@ -37,18 +40,16 @@ const refs = {
   registerFormCreatFormSignUp: document.getElementById('creatFormSignUp'),
   divRegisterError: document.getElementById('divRegisterError'),
 
-  	// Рефи для регістрації і строрення аккаунта
-	// registerFormCreatFormSignUp: document.getElementById('creatFormSignUp'),
-	// divRegisterError: document.getElementById('divRegisterError'),
+  // Рефи для регістрації і строрення аккаунта
+  // registerFormCreatFormSignUp: document.getElementById('creatFormSignUp'),
+  // divRegisterError: document.getElementById('divRegisterError'),
 
   formaLoginCreatRegister: document.getElementById('formaLoginCreatRegister'),
-
   signinForm: document.getElementById('login-div'),
   signupForm: document.getElementById('register-div'),
-
   btnSignupForm: document.getElementById('register-btn'),
   btnSigninForm: document.getElementById('login-btn'),
-  
   btnLogin: document.getElementById('btnLogin'),
-  btnLoginout: document.getElementById('log-out-btn')
+  btnLoginout: document.getElementById('log-out-btn'),
+  btnEmptyLibraryBox: document.querySelector('#btn-empty-box'),
 };

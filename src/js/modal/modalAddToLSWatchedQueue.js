@@ -2,11 +2,16 @@ import { refs } from '../refs';
 import { movieClass } from '../portfolio/movieClass';
 import { btnModalClass } from './btnModalClass';
 import {createFilmStickers, removeFilmStickers} from '../portfolio/cteateGalleryStickers';
+import { onWatchedBtn } from '../portfolio/watchedBtn';
+import {onQueueBtn} from '../portfolio/queueBtn';
 export {onModalBtnClick};
 
+  
+  
 function onModalBtnClick(evt) {
   evt.preventDefault();
-
+  // console.log('onWatchedBtn', onWatchedBtn);
+  
   const liBtn = evt.target.closest('li');
   if (!liBtn) return;
 
@@ -15,6 +20,10 @@ function onModalBtnClick(evt) {
   const film = movieClass.searchFilmByIdInLS(id);
   // console.log('film:', film,  'actions:', actions, 'id:', id, 'liBtn', liBtn);
 
+  const currentPage = document.querySelector('.current');
+  // console.log('currentPage.textContent', currentPage.textContent);
+
+  
   // Проверка - сохранен ли фильм, внесение или удаление с локал сторидж 
   if (btnModalClass.isFilmIncludesLSLibrary(id, actions)) {
     // console.log('удаляю из хранилища', );
@@ -30,7 +39,13 @@ function onModalBtnClick(evt) {
     
   }
 
-  // console.log('изменяю название кнопки', );
+
+  if (currentPage.textContent == 'My library' && actions == 'watched') {
+  onWatchedBtn(actions);
+} else if (currentPage.textContent == 'My library' && actions == 'queue') {
+    onQueueBtn(actions);
+  }
+
   
   movieClass.changeModalBtnName(liBtn, id, actions);
 }

@@ -5,7 +5,7 @@ export {createGalleryStickers, createFilmStickers, removeFilmStickers};
 
 
 function createGalleryStickers () {
-	filmsInGallery = movieClass.parseFindedFilms();
+	let filmsInGallery = movieClass.parseFindedFilms();
 	// console.log('filmsInGallery', filmsInGallery);
 	filmsInGallery.forEach(film => {
 		// console.log('film', film);
@@ -32,7 +32,10 @@ function createFilmStickers(film, actions) {
 	// const card = document.querySelector(`[data-id='${film.id}']`);
 	// console.log('card', card);
 	const divWrapper = document.querySelector(`[data-status='${film.id}']`);
+	if (!divWrapper) return;
 	// console.log('divWrapper', divWrapper);
+	if (document.querySelector(`[data-id="${film.id}${actions}"]`)) return
+	
 	if(actions == 'watched') {
 		const content = 'watched';
 		
@@ -49,7 +52,8 @@ function createFilmStickers(film, actions) {
 
 function removeFilmStickers(film, actions) {
 	// console.log(`удаляю стикер ${actions} на карточке фильма ${film.id}`, );
-	const statusBtn = document.querySelector(`[data-id='${film.id}${actions}']`)
+	const statusBtn = document.querySelector(`[data-id='${film.id}${actions}']`);
     // console.log('statusBtn', statusBtn);
+	if (!statusBtn) return
 	statusBtn.remove();
 }

@@ -1,5 +1,5 @@
 import { movieClass } from './movieClass';
-import genres from './genres';
+import {genres} from './genres';
 
 export { createMurkup };
 
@@ -25,11 +25,18 @@ function createMurkup({
     ? movieClass.modifyDate(release_date, first_air_date)
     : 'No info'
 
+  const imgSrc = `https://image.tmdb.org/t/p/w500`;
+  let imgLink = `${imgSrc}${poster_path}`
+  if (!poster_path) {
+    imgLink =
+      'https://i.ibb.co/BrYLsTv/default-movie-poster-min.jpg';
+  }
+
   return `<li class="gallery_card__item" data-id=${id}>
   <div class="status-btn-wrapper" data-status=${id}></div>
   <a href="./" class="gallery_card__link">
       <div class="gallery_thumb">
-          <img src=https://image.tmdb.org/t/p/w500${poster_path} alt="movie cover" loading='lazy' class="gallery_card__img">
+          <img src=${imgLink} alt="movie cover" loading='lazy' class="gallery_card__img">
       </div>
       <div class="gallery_info">
           <h3 class="gallery_info__name">${original_title}</h3>

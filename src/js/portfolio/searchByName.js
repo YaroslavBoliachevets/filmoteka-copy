@@ -7,14 +7,16 @@ refs.searchError.style.visibility = "hidden";
 if(refs?.searchForm) {
   refs.searchForm.addEventListener("submit", handleSubmit);
 }
-let page = 1;
+//let page = 1;
 
 function handleSubmit(event) {
   event.preventDefault();
   const searchQuery = refs.searchForm.search.value.trim();
+  movieClass.searchQuery = refs.searchForm.search.value.trim();
+  movieClass.page = 0;
 
   if (searchQuery !== '') {
-    createSearchedPortfolio(searchQuery);
+    createSearchedPortfolio(movieClass.searchQuery);
     refs.searchForm.reset();
     }
   return searchQuery;

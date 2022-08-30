@@ -1,35 +1,81 @@
 import { refs } from '../refs';
 import { createMarkup } from './createWatchedMarkup';
 import { onFilmCardClick } from './modalFilm';
+import { movieClass } from './movieClass';
+export { onWatchedBtn };
 
-// console.log('we work', );
+const currentPage = document.querySelector('.current');
 
-// refs.btnWatched.addEventListener('click', onWatchedBtn);
-// refs.watchedListRef.addEventListener('click', onFilmCardClick);
+if (currentPage.textContent === 'My library') {
+  refs.btnWatched.addEventListener('click', () => {
+    refs.watchedListRef.classList.remove('visually-hidden');
+    refs.queueListRef.classList.add('visually-hidden');
+    refs.watchedListRef.classList.add('js-gallery__list');
+    refs.queueListRef.classList.remove('js-gallery__list');
+    refs.queueListRef.classList.remove('js-gallery__list');
+    refs.btnQueue.classList.remove('is-active');
+    refs.btnWatched.classList.add('is-active');
+  });
+}
 
-onWatchedBtn();
-async function onWatchedBtn() {
-  
-  const savedWatched = await localStorage.getItem('watched');
-  const parsedWatched = JSON.parse(savedWatched);
-
-  if (!parsedWatched || parsedWatched.length === 0) {    
-    return refs.watchedListRef.innerHTML =
-      "<p class = 'empty-queue-notify'>You don't have movies yet :(</p>";
+onWatchedBtn('watched');
+async function onWatchedBtn(actions) {
+  const currentPage = document.querySelector('.current');
+  if (currentPage.textContent === 'Home') {
+    return;
   }
 
   if (!refs.watchedListRef.classList.contains('actual')) {
-    refs.watchedListRef.classList.add('actual');
-    refs.btnLibraryClickMe.classList.add('is-hidden');
-    refs.watchedListRef.insertAdjacentHTML(
-      'beforeend',
-      parsedWatched
-        .map(item => {
-          return createMarkup(item);
-        })
-        .join('')
-    );
+    const parsedWatched = await movieClass.getFromLS('watched');
+
+    const parsedQueue = movieClass.getFromLS('queue');
+    if (actions == 'watched') {
+      refs.watchedListRef.innerHTML = '';
+    }
+
+    if (actions == 'queue') {
+      refs.queueListRef.innerHTML = '';
+    }
+
+    if (!parsedWatched || parsedWatched.length === 0) {
+      if (actions == 'watched') {
+        return (refs.watchedListRef.innerHTML =
+          "<li class = 'empty-queue-notify'><p>You don't have added movies to your library yet :(</p></li>");
+      }
+    }
+
+    if (!parsedQueue || parsedQueue.length === 0) {
+      if (actions == 'queue') {
+        return (refs.queueListRef.innerHTML =
+          "<p class = 'empty-queue-notify'>You don't have movies yet :(</p>");
+      }
+    }
+
+    
+    if (actions == 'watched') {
+      refs.watchedListRef.insertAdjacentHTML(
+        'beforeend',
+        parsedWatched
+          .map(item => {
+            return createMarkup(item);
+          })
+          .join('')
+      );
+    }
+
+    if (actions == 'queue') {
+      refs.queueListRef.insertAdjacentHTML(
+        'beforeend',
+        parsedWatched
+          .map(item => {
+            return createMarkup(item);
+          })
+          .join('')
+      );
+    }
+
   } else {
     return;
   }
 }
+
