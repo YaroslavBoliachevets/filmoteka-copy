@@ -2,10 +2,10 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "http://ivankazhelezniak.github.io/team-js-filmoteka/",
+  "homepage": "http://YaroslavBoliachevets.github.io/filmoteka-copy/",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /team-js-filmoteka/"
+    "build": "parcel build src/*.html --public-url /filmoteka-copy/"
   },
   "repository": {
     "type": "git",
